@@ -9,6 +9,7 @@ This repo consists of the code used to play around with java 8 features by learn
 ## Major points
 
   - Interfaces can have default functions. Use `default` qualifier.
+  - No need of anonymous classes for comparators
 
 ## License
 
