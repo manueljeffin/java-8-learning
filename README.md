@@ -1,6 +1,6 @@
 #  Java-8-Learning
 
-This repo consists of the code used to play around with java 8 features by learning it from repo [java8-tutorial](https://github.com/winterbe/java8-tutorial).
+This repo consists of the code used to play around with java 8 features.
 
 ## Topics Covered
 
@@ -63,6 +63,11 @@ This repo consists of the code used to play around with java 8 features by learn
     - Temporal classes with utility methods: `ChronoUnit`, `ChronoField`
   - Annotations
     - Pre-define repeatable annotations and then add repeatable annotations which are internally post-processed for you.
+    
+## Sources
+
+  - [java8-tutorial](https://github.com/winterbe/java8-tutorial)
+  - [Java8 Sorting tutorial](http://www.leveluplunch.com/java/tutorials/007-sort-arraylist-stream-of-objects-in-java8/)
     
 
 ## License
