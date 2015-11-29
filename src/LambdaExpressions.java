@@ -1,6 +1,13 @@
+import java.time.Clock;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -71,6 +78,44 @@ public class LambdaExpressions {
         Optional<String> myOptional = Optional.of(b);
         myOptional.ifPresent(printer);
         myOptional.orElse("dcba");
+
+
+        // stream and its operations or most of them
+        Optional<String> out =  lambdaList.stream().filter((l) -> l.solluda > 3)
+                .sorted((k, m) -> k.ennada.compareTo(m.ennada))
+                .map((f) -> f.ennada)
+                .reduce((g, h) -> g + "." + h);
+        out.ifPresent((o) -> System.out.println(o));
+
+        // Map operations
+        Map<Integer, String> map = new HashMap<>();
+
+        for (int i = 0; i < 10; i++) {
+            map.putIfAbsent(i, "val" + i);
+        }
+
+        map.entrySet().stream().forEach((entry) -> System.out.println(entry));
+        map.forEach((id, val) -> System.out.println(id + ": " + val));
+
+        // similar to putIfAbsent there are other functions
+        map.computeIfPresent(6, (num, value) -> value + num);
+        map.computeIfAbsent(6, (num) -> "val" + num);
+
+        // elegant way of setting counters using new map functions
+        Map<Integer, Integer> intMap = new HashMap<>();
+        intMap.putIfAbsent(23, 1);
+        intMap.computeIfPresent(23, (num, val) -> val++);
+
+        // instead of System.currentTimeMillis()
+        Clock clock = Clock.systemDefaultZone();
+        long millis = clock.millis();
+
+        // creating Date object using Instant
+        Instant instant = clock.instant();
+        Date legacyDate = Date.from(instant);   // legacy java.util.Date
+
+        LocalDate date = LocalDate.now();
+        date.plus(2, ChronoUnit.MONTHS);
 
     }
 
