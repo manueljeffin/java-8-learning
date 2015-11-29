@@ -38,6 +38,11 @@ public class LambdaExpressions {
         // Object method referencing
         MyComparator<Lambda> lambdaMyComparator1 = forReferencing::compare1;
         System.out.println("Object method :" +lambdaMyComparator1.compare(lambdaList.get(1), lambdaList.get(1)));
+
+        //constructor referencing
+        LambdaFactory<Lambda> myFactory = Lambda::new;
+        Lambda a = myFactory.create("adfa", 1);
+
     }
 
     public static void main(String[] args) {
@@ -68,4 +73,8 @@ class Lambda {
 @FunctionalInterface
 interface MyComparator<T> {
     int compare(T a, T b);
+}
+
+interface LambdaFactory<L extends Lambda> {
+    L create(String a, int b);
 }

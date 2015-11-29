@@ -11,7 +11,10 @@ This repo consists of the code used to play around with java 8 features by learn
   - Interfaces can have default functions. Use `default` qualifier.
   - No need of anonymous classes for comparators
   - Functional Interfaces with one abstract method make lambda expression possible. Use `@FunctionalInterface` annotation.
-  - `::` annotation make referencing static methods, object methods, constructors possible.
+  - `::` symbol with method make referencing static methods, object methods, constructors possible.
+  - `::new` allows to reference constructors of the classes being accessed.
+  - Variables outside of the scope of lambda expressions can be accessed without `final` keyboard. But, they should be implicitly final.
+  
   
 
 ## License
