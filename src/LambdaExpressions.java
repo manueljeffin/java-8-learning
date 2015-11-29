@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * Used to refer to https://github.com/winterbe/java8-tutorial
@@ -42,6 +46,31 @@ public class LambdaExpressions {
         //constructor referencing
         LambdaFactory<Lambda> myFactory = Lambda::new;
         Lambda a = myFactory.create("adfa", 1);
+
+        // One line isPalindrome tester made possible by Functional interface predicate, lambda
+        Predicate<String> isPalindrome = (d) -> d.equals(new StringBuffer(d).reverse().toString());
+        System.out.println(isPalindrome.test("aba"));
+
+        Predicate<String> isEmpty = String::isEmpty;
+        isEmpty.test("aba");
+
+        // Functions Syntax: Input argument(1), return value
+        Function<String, Integer> toInteger = Integer::valueOf;
+        Function<Integer, String> toString = String::valueOf;
+        toInteger.andThen(toString).apply("123");
+
+        // andThen and compose are opposites of 'Function' interface methods that allow composition
+        // of multiple functions together.
+        Function<String, String> selfCompose = toString.compose(toInteger);
+
+        //Consumer
+        Consumer<String> printer = (e) -> System.out.println(e);
+
+        // Testing optional usage
+        String b = "abcd";
+        Optional<String> myOptional = Optional.of(b);
+        myOptional.ifPresent(printer);
+        myOptional.orElse("dcba");
 
     }
 
